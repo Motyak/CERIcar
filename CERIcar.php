@@ -4,9 +4,15 @@ $nameApp = "CERIcar";
 
 //action par défaut
 $action = "index";
+//$action = array("index");
 
 if(key_exists("action", $_REQUEST))
 	$action =  $_REQUEST['action'];
+	
+//~ foreach($action as $a)
+//~ {
+	//~ echo $a . " ";
+//~ }
 
 require_once 'lib/core.php';
 require_once $nameApp.'/controller/mainController.php';

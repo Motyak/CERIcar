@@ -18,13 +18,13 @@ Aucun voyage n'a été trouvé
 		$voyage->conducteur->prenom," ",
 		$voyage->conducteur->nom,
 		
-		//colonne3 : tarif
+		//colonne2 : tarif
 		"</td>\n\t\t\t<td>",$voyage->tarif,
 		
-		//colonne4 : nbplace
+		//colonne3 : nbplace
 		"</td>\n\t\t\t<td>",$voyage->nbplace,
 		
-		//colonne5 : heuredepart
+		//colonne4 : heuredepart
 		"</td>\n\t\t\t<td>",$voyage->heuredepart,
 		"</td>";
 	}
