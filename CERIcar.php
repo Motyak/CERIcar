@@ -31,6 +31,7 @@ if($view===false)
 elseif($view!=context::NONE)
 {
 	$template_view=$nameApp."/view/".$action.$view.".php";
+	//$template_view=array($nameApp."/view/"."rechercherVoyages"."Success".".php",$nameApp."/view/"."printVoyagesByDepartArrivee"."Success".".php");
 	include($nameApp."/layout/".$context->getLayout().".php");
 }
 

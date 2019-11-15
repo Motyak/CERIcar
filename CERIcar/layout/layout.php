@@ -3,6 +3,10 @@
   <head>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
        <link rel="stylesheet" type="text/css" href="CERIcar/layout/style.css">
+       
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+		
        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
       <script type="text/javascript">
       $(document).ready(function(){
@@ -36,8 +40,6 @@
         <?php
         if($context->error)
           echo 'Erreur : ' . $context->error;
-        else if($context->action != NULL) 
-          echo 'Action demandée : ' . $context->action;
         else
           echo 'Action demandée : ' . $action;
         ?>
@@ -50,6 +52,10 @@
       <?php endif; ?>
       <div id="page_maincontent">	
       	<?php include($template_view); ?>
+      	<?php
+			//foreach($template_view as $view)
+				//include($view);
+      	?>
       </div>
     </div>
       
