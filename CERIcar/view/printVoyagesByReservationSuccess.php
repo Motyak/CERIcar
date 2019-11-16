@@ -47,4 +47,4 @@ Aucun voyage n'a été trouvé
 	}
 	?>
 </table>
-<?php endif; ?>
+<!-- <?php endif; ?> -->

@@ -51,10 +51,10 @@
       	</div>
       <?php endif; ?>
       <div id="page_maincontent">	
-      	<?php include($template_view); ?>
+      	<?php //include($template_view); ?>
       	<?php
-			//foreach($template_view as $view)
-				//include($view);
+			  foreach($template_view as $tv)
+				  include($tv);
       	?>
       </div>
     </div>

@@ -1,6 +1,3 @@
-<?php if($context->voyages == null) : ?>
-Aucun voyage n'a été trouvé
-<?php else : ?>
 <table id="voyages">
 	<thead>
 		<tr>
@@ -11,23 +8,26 @@ Aucun voyage n'a été trouvé
 		</tr>
 	</thead>
 	<?php 
-	foreach($context->voyages as $voyage)
+	if($context->voyages!=null)
 	{
-		//colonne1 : conducteur
-		echo "<tr>\n\t\t\t<td>",
-		$voyage->conducteur->prenom," ",
-		$voyage->conducteur->nom,
-		
-		//colonne2 : tarif
-		"</td>\n\t\t\t<td>",$voyage->tarif,
-		
-		//colonne3 : nbplace
-		"</td>\n\t\t\t<td>",$voyage->nbplace,
-		
-		//colonne4 : heuredepart
-		"</td>\n\t\t\t<td>",$voyage->heuredepart,
-		"</td>";
+		foreach($context->voyages as $voyage)
+		{
+			//colonne1 : conducteur
+			echo "<tr>\n\t\t\t<td>",
+			$voyage->conducteur->prenom," ",
+			$voyage->conducteur->nom,
+			
+			//colonne2 : tarif
+			"</td>\n\t\t\t<td>",$voyage->tarif,
+			
+			//colonne3 : nbplace
+			"</td>\n\t\t\t<td>",$voyage->nbplace,
+			
+			//colonne4 : heuredepart
+			"</td>\n\t\t\t<td>",$voyage->heuredepart,
+			"</td>";
+		}
 	}
 	?>
 </table>
-<?php endif; ?>
+
