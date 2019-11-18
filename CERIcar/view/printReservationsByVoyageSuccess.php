@@ -1,5 +1,4 @@
-<?php require("addStyle.html"); ?>
-<?php if($context->reservations == null) : ?>
+<?php if($context->res == null) : ?>
 Aucune réservation n'a été trouvé
 <?php else : ?>
 <table id="reservations">
@@ -11,7 +10,7 @@ Aucune réservation n'a été trouvé
 		</tr>
 	</thead>
 	<?php 
-	foreach($context->reservations as $reservation)
+	foreach($context->res as $reservation)
 	{
 		//colonne1 : id
 		echo "<tr>\n\t\t\t<td>",$reservation->id,

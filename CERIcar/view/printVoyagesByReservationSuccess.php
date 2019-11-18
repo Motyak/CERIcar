@@ -1,5 +1,4 @@
-<?php require("addStyle.html"); ?>
-<?php if($context->voyages == null) : ?>
+<?php if($context->res == null) : ?>
 Aucun voyage n'a été trouvé
 <?php else : ?>
 <table id="voyages">
@@ -15,7 +14,7 @@ Aucun voyage n'a été trouvé
 		</tr>
 	</thead>
 	<?php 
-	foreach($context->voyages as $voyage)
+	foreach($context->res as $voyage)
 	{
 		//colonne1 : id
 		echo "<tr>\n\t\t\t<td>",$voyage->id,

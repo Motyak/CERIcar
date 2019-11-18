@@ -8,9 +8,9 @@
 		</tr>
 	</thead>
 	<?php 
-	if($context->voyages!=null)
+	if($context->res!=null)
 	{
-		foreach($context->voyages as $voyage)
+		foreach($context->res as $voyage)
 		{
 			//colonne1 : conducteur
 			echo "<tr>\n\t\t\t<td>",
