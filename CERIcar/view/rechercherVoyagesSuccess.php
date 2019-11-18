@@ -22,8 +22,15 @@ $('#formRecherche').on('submit',makeRequest);
 function processServerResponse(){
     if(xhr.readyState==4 && xhr.status==200){
         var data=xhr.responseText;
-        alert(data);
-        // voyages=JSON.parse(data);
+        //losque la page a fini de chargé entièrement (toutes les vues)
+        $( document ).ready(function() {
+            //recuperer uniquement le nouveau contenu (lignes de la table en l'occurence)
+            var newContent=$($.parseHTML(data)).find('thead').siblings().html();
+            //supprime les lignes de la table actuelle
+            $('thead').siblings().remove();
+            //ajouter les nouvelles lignes à la table actuelle
+            $('thead').after(newContent);
+        });
     }
 }
 
@@ -42,8 +49,7 @@ function processServerResponse(){
         xhr=new XMLHttpRequest();
     }
     xhr.onreadystatechange=processServerResponse;
-    xhr.open("GET","CERIcar.php?action=printVoyagesByDepartArrivee&villeDepart="+depart+"&villeArrivee="+arrivee+"&json=1",true);
-    // xhr.open("GET","CERIcar.php?action=printVoyagesByDepartArrivee&villeDepart=Paris&villeArrivee=Lyon&json=1",true);
+    xhr.open("GET","CERIcar.php?action=printVoyagesByDepartArrivee&villeDepart="+depart+"&villeArrivee="+arrivee,true);
     xhr.send(null);
     return false;
 }

@@ -38,14 +38,14 @@ class mainController
 			return context::ERROR;
 		}
 
-		$context->res=utilisateurTable::getUserByLoginAndPass($request["login"],$request["pass"]);
+		$context->user=utilisateurTable::getUserByLoginAndPass($request["login"],$request["pass"]);
 
-		if($context->res == null)
+		if($context->user == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if($context->res instanceof utilisateur == false)
+		else if($context->user instanceof utilisateur == false)
 		{
-			$context->error=$context->res;
+			$context->error=$context->user;
 			return context::ERROR;
 		}
 		else
@@ -60,14 +60,14 @@ class mainController
 			return context::ERROR;
 		}
 
-		$context->res=utilisateurTable::getUserById($request["id"]);
+		$context->user=utilisateurTable::getUserById($request["id"]);
 
-		if($context->res == null)
+		if($context->user == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if($context->res instanceof utilisateur == false)
+		else if($context->user instanceof utilisateur == false)
 		{
-			$context->error=$context->res;
+			$context->error=$context->user;
 			return context::ERROR;
 		}
 		else
@@ -87,14 +87,14 @@ class mainController
 			return context::ERROR;
 		}
 
-		$context->res=trajetTable::getTrajet($request["depart"],$request["arrivee"]);
+		$context->trajet=trajetTable::getTrajet($request["depart"],$request["arrivee"]);
 		
-		if($context->res == null)
+		if($context->trajet == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if($context->res instanceof trajet == false)
+		else if($context->trajet instanceof trajet == false)
 		{
-			$context->error=$context->res;
+			$context->error=$context->trajet;
 			return context::ERROR;
 		}
 		else
@@ -109,14 +109,14 @@ class mainController
 			return context::ERROR;
 		}	
 
-		$context->res=voyageTable::getVoyagesByTrajet($request["trajet"]);
+		$context->voyages=voyageTable::getVoyagesByTrajet($request["trajet"]);
 
-		if($context->res == null)
+		if($context->voyages == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if(!is_array($context->res))
+		else if(!is_array($context->voyages))
 		{
-			$context->error=$context->res;
+			$context->error=$context->voyages;
 			return context::ERROR;
 		}
 		else
@@ -131,14 +131,14 @@ class mainController
 			return context::ERROR;
 		}
 
-		$context->res=reservationTable::getReservationsByVoyage($request["voyage"]);
+		$context->reservations=reservationTable::getReservationsByVoyage($request["voyage"]);
 
-		if($context->res == null)
+		if($context->reservations == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if(!is_array($context->res))
+		else if(!is_array($context->reservations))
 		{
-			$context->error=$context->res;
+			$context->error=$context->reservations;
 			return context::ERROR;
 		}
 		else
@@ -163,16 +163,16 @@ class mainController
 			return context::ERROR;
 		}
 
-		$context->res=voyageTable::getVoyagesByTrajet(
+		$context->voyages=voyageTable::getVoyagesByTrajet(
 			trajetTable::getTrajet($request["villeDepart"],$request["villeArrivee"])
 		);
 
-		if($context->res == null)
+		if($context->voyages == null)
 			// return context::NONE;
 			return context::SUCCESS;
-		else if(!is_array($context->res))
+		else if(!is_array($context->voyages))
 		{
-			$context->error=$context->res;
+			$context->error=$context->voyages;
 			return context::ERROR;
 		}
 		else

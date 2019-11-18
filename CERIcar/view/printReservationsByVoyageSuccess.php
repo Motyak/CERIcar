@@ -1,4 +1,4 @@
-<?php if($context->res == null) : ?>
+<?php if($context->reservations == null) : ?>
 Aucune réservation n'a été trouvé
 <?php else : ?>
 <table id="reservations">
@@ -10,7 +10,7 @@ Aucune réservation n'a été trouvé
 		</tr>
 	</thead>
 	<?php 
-	foreach($context->res as $reservation)
+	foreach($context->reservations as $reservation)
 	{
 		//colonne1 : id
 		echo "<tr>\n\t\t\t<td>",$reservation->id,

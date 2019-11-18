@@ -30,17 +30,11 @@ if($view===false)
 //inclusion du layout qui va lui meme inclure le template view
 elseif($view!=context::NONE)
 {
-	if(key_exists("json", $_REQUEST) && $_REQUEST['json']=='1'){
-		if(is_array($context->res))
-			echo json_encode($context->res);
-	}
-	else{
-		$template_view=array($nameApp."/view/".$action.$view.".php");
-		$subViews=glob($nameApp."/view/".$action."*-*.php");
-		foreach($subViews as $sv)
-			$template_view[]=$sv;
-		include($nameApp."/layout/".$context->getLayout().".php");
-	}
+	$template_view=array($nameApp."/view/".$action.$view.".php");
+	$subViews=glob($nameApp."/view/".$action."*-*.php");
+	foreach($subViews as $sv)
+		$template_view[]=$sv;
+	include($nameApp."/layout/".$context->getLayout().".php");
 }
 
 ?>

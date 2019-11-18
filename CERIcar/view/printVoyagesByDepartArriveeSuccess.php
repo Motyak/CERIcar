@@ -1,4 +1,5 @@
-<table id="voyages">
+<div id=printVoyagesByDepartArriveeSuccess>
+<table id="voyages" name="test">
 	<thead>
 		<tr>
 			<th>CONDUCTEUR</th>
@@ -8,26 +9,26 @@
 		</tr>
 	</thead>
 	<?php 
-	if($context->res!=null)
+	if($context->voyages!=null)
 	{
-		foreach($context->res as $voyage)
+		foreach($context->voyages as $voyage)
 		{
 			//colonne1 : conducteur
-			echo "<tr>\n\t\t\t<td>",
+			echo "<tr>\n\t\t<td>",
 			$voyage->conducteur->prenom," ",
 			$voyage->conducteur->nom,
 			
 			//colonne2 : tarif
-			"</td>\n\t\t\t<td>",$voyage->tarif,
+			"</td>\n\t\t<td>",$voyage->tarif,
 			
 			//colonne3 : nbplace
-			"</td>\n\t\t\t<td>",$voyage->nbplace,
+			"</td>\n\t\t<td>",$voyage->nbplace,
 			
 			//colonne4 : heuredepart
-			"</td>\n\t\t\t<td>",$voyage->heuredepart,
-			"</td>";
+			"</td>\n\t\t<td>",$voyage->heuredepart,
+			"</td>\n\t</tr>\n\t";
 		}
 	}
 	?>
 </table>
-
+</div>

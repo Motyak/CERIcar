@@ -1,5 +1,5 @@
-<?php if($context->res == null) : ?>
+<?php if($context->user == null) : ?>
 Aucune utilisateur n'a été trouvé
 <?php else : ?>
-Bonjour <?php echo $context->res->prenom," ",$context->res->nom ?> !
+Bonjour <?php echo $context->user->prenom," ",$context->user->nom ?> !
 <?php endif; ?>
