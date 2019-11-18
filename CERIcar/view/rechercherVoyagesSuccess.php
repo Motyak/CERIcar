@@ -1,4 +1,3 @@
-<body>
 <!-- <form action="https://pedago.univ-avignon.fr/~uapv1903668/CERIcar.php"> -->
   <form id=formRecherche>
   <!-- <input type="hidden" name="action" value="printVoyagesByDepartArrivee" /> -->
@@ -24,12 +23,12 @@ function processServerResponse(){
         var data=xhr.responseText;
         //losque la page a fini de chargé entièrement (toutes les vues)
         $( document ).ready(function() {
-            //recuperer uniquement le nouveau contenu (lignes de la table en l'occurence)
-            var newContent=$($.parseHTML(data)).find('thead').siblings().html();
-            //supprime les lignes de la table actuelle
-            $('thead').siblings().remove();
-            //ajouter les nouvelles lignes à la table actuelle
-            $('thead').after(newContent);
+            //recuperer uniquement le nouveau contenu
+            var newContent=$($.parseHTML(data)).find('#printVoyagesByDepartArriveeSuccess').html();
+            //supprime contenu div actuelle
+            $('#printVoyagesByDepartArriveeSuccess').children().remove();
+            //Mettre a jour la div avec nouveau contenu
+            $('#printVoyagesByDepartArriveeSuccess').html(newContent);
         });
     }
 }
@@ -54,4 +53,3 @@ function processServerResponse(){
     return false;
 }
 </script>
-</body>

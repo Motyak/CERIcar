@@ -1,5 +1,9 @@
 <div id=printVoyagesByDepartArriveeSuccess>
-<table id="voyages" name="test">
+<?php
+if($context->voyages==null)
+	echo "Aucun voyage n'a été trouvé";
+?>
+<table id="voyages">
 	<thead>
 		<tr>
 			<th>CONDUCTEUR</th>
