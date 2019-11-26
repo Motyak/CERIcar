@@ -1,9 +1,14 @@
 <div id=printVoyagesByDepartArriveeSuccess>
+	<div class="table-responsive">
 <?php
-if($context->voyages==null)
-	echo "Aucun voyage n'a été trouvé";
+if($context->voyages==null){
+	echo "<div class='alert alert-info'>",
+    "<strong>Info : </strong>",
+    "Aucun voyage n'a été trouvé",
+  "</div>";
+}
 ?>
-<table id="voyages">
+<table id="voyages" class="table table-hover">
 	<thead>
 		<tr>
 			<th>CONDUCTEUR</th>
@@ -35,4 +40,5 @@ if($context->voyages==null)
 	}
 	?>
 </table>
+</div>
 </div>

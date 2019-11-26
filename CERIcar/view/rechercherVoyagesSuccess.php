@@ -1,5 +1,6 @@
 <!-- <form action="https://pedago.univ-avignon.fr/~uapv1903668/CERIcar.php"> -->
-  <form id=formRecherche>
+<div id="rechercherVoyagesSuccess">
+  <form id="formRecherche">
   <!-- <input type="hidden" name="action" value="printVoyagesByDepartArrivee" /> -->
   Ville de départ:<br>
   <input type="text" name="villeDepart" id="depart">
@@ -9,7 +10,9 @@
   <br><br>
   <input type="submit" value="Rechercher">
 </form>
+</div>
 <!-- <script src="js/rechercherVoyages.js" type="text/javascript" defer></script> -->
+<!--
 <script type="text/javascript">
 
 var xhr;
@@ -27,7 +30,7 @@ function processServerResponse(){
             var newContent=$($.parseHTML(data)).find('#printVoyagesByDepartArriveeSuccess').html();
             //supprime contenu div actuelle
             $('#printVoyagesByDepartArriveeSuccess').children().remove();
-            //Mettre a jour la div avec nouveau contenu
+            //ajouter les nouvelles lignes à la table actuelle
             $('#printVoyagesByDepartArriveeSuccess').html(newContent);
         });
     }
@@ -53,3 +56,4 @@ function processServerResponse(){
     return false;
 }
 </script>
+-->
