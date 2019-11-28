@@ -1,4 +1,3 @@
-<div id=printVoyagesByDepartArriveeSuccess>
 <div class="table-responsive">
 	<table id="voyages" class="table table-hover">
 		<thead>
@@ -10,5 +9,4 @@
 			</tr>
 		</thead>
 	</table>
-</div>
 </div>

@@ -1,5 +1,4 @@
-<div id=printVoyagesByDepartArriveeSuccess>
-	<div class="table-responsive">
+<div class="table-responsive">
 <?php
 if($context->voyages==null){
 	echo "<div class='alert alert-info'>",
@@ -40,5 +39,4 @@ if($context->voyages==null){
 	}
 	?>
 </table>
-</div>
 </div>
