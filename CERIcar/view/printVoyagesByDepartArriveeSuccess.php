@@ -27,13 +27,13 @@ if($context->voyages==null){
 			$voyage->conducteur->nom,
 			
 			//colonne2 : tarif
-			"</td>\n\t\t<td>",$voyage->tarif,
+			"</td>\n\t\t<td>",$voyage->tarif,'€',
 			
 			//colonne3 : nbplace
 			"</td>\n\t\t<td>",$voyage->nbplace,
 			
 			//colonne4 : heuredepart
-			"</td>\n\t\t<td>",$voyage->heuredepart,
+			"</td>\n\t\t<td>",$voyage->heuredepart,'h',
 			"</td>\n\t</tr>\n\t";
 		}
 	}
