@@ -12,7 +12,9 @@
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/layout.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/utils.css">
     <script src="js/layout.js" type="text/javascript"></script>
 
     <title>
@@ -38,7 +40,7 @@
                         <li><a href="#" id="menuRechercher"><span class="glyphicon glyphicon-search"></span> Rechercher</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+                        <li><a href="#" id="menuSeConnecter"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
                     </ul>
                 </div>
             </div>

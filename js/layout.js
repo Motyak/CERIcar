@@ -13,6 +13,7 @@ $(document).ready(function () {
 
     $('#menuIndex').click(menuIndex_Click);
     $('#menuRechercher').click(menuRechercher_Click);
+    $('#menuSeConnecter').click(menuSeConnecter_Click);
 });
 
 var xhr;
@@ -21,12 +22,10 @@ function updateBandeau(msg)
 {
     //faire disparaitre le bandeau
     $('#bandeau').css("marginBottom","-50px");
-    //attribuer msg au bandeau
-    $('#bandeau').html(msg);
-    //le refaire apparaitre
-    $("#bandeau").animate({
-        marginBottom: "0px",
-    }, 500);
+    //attribuer msg au bandeau + la croix pour fermer
+    $('#bandeau').html(msg + '\n<div id="fermer">&#10006</div>');
+    //reinvoquer le script du layout pour l'anim du bandeau et la fermeture
+    $.getScript("js/layout.js");
 }
 
 function createAjaxObj()
@@ -115,6 +114,28 @@ function menuRechercher_Click()
     //clear la page puis charger la vue index
     xhr.onreadystatechange=menuRechercher_Process;
     xhr.open("GET","CERIcar.php?action=rechercherVoyages",true);
+    xhr.send(null);
+    return false;
+}
+
+function menuSeConnecter_Process()
+{
+    if(xhr.readyState==4 && xhr.status==200){
+        var data=xhr.responseText;
+        var newContent=$($.parseHTML(data)).find('#userLoginSuccess').html();
+        clearPage();
+        addView(newContent,"userLoginSuccess");
+        //charger userLogin.js
+        $.getScript("js/userLogin.js");
+        updateBandeau("Page userLogin chargée.");
+    }
+}
+
+function menuSeConnecter_Click()
+{
+    //clear la page puis charger la vue index
+    xhr.onreadystatechange=menuSeConnecter_Process;
+    xhr.open("GET","CERIcar.php?action=userLogin",true);
     xhr.send(null);
     return false;
 }

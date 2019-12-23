@@ -1,4 +1,3 @@
-<script src="js/rechercherVoyages.js" type="text/javascript"></script>
   <form id="formRecherche">
   Ville de départ:<br>
   <input type="text" name="villeDepart" id="inputTextVilleDepart">

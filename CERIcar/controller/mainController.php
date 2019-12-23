@@ -25,6 +25,37 @@ class mainController
 	// 	return context::SUCCESS;
 	// }
 
+	public static function userLogin($request,$context)
+	{
+		// si tentative de connexion
+		if(isset($request['login']) && isset($request['pwd']))
+		{
+			$context->user=utilisateurTable::getUserByLoginAndPass($request['login'],$request['pwd']);
+
+			// si aucun utilisateur trouve
+			if($context->user==null)
+			{
+				$context->error = "Login ou mot de passe incorrect !";
+				// return context::ERROR;
+			}
+
+			// si erreur connexion bdd
+			else if($context->user instanceof utilisateur == false)
+			{
+				// car le message d'erreur est retourne a la place de l'utilisateur
+				$context->error=$context->user;
+				// return context::ERROR;
+			}
+			
+			// si utilisateur trouve
+			else
+			{
+				$_SESSION['info'] = $context->user->nom.'&nbsp;' . $context->user->prenom;
+			}
+		}
+        return context::SUCCESS;
+    }
+
 	public static function printUserByLoginAndPass($request,$context)
 	{
 		if(!isset($request["login"]))
