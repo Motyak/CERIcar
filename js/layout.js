@@ -55,13 +55,14 @@ function delView(nomVue)
     updateBandeau("Vue "+nomVue+" supprimée.");
 }
 
-function addView(newContent,nomVue)
+function addView(newContent,nomVue,verbose=true)
 {
     //si la vue existe déjà, on reactualise son contenu sans changer sa position sur la page
     if($('#'+nomVue).length)
     {
         $('#'+nomVue).html(newContent);
-        updateBandeau("Vue "+nomVue+" actualisée.");
+        if(verbose)
+            updateBandeau("Vue "+nomVue+" actualisée.");
     }
         
 
@@ -69,7 +70,8 @@ function addView(newContent,nomVue)
     else
     {
         $('#page_maincontent').append("<div id="+nomVue+">\n"+newContent+"</div>\n");
-        updateBandeau("Vue "+nomVue+" ajoutée.");
+        if(verbose)
+            updateBandeau("Vue "+nomVue+" ajoutée.");
     }
         
 
@@ -91,7 +93,6 @@ function menuIndex_Click()
     xhr.onreadystatechange=menuIndex_Process;
     xhr.open("GET","CERIcar.php?action=index",true);
     xhr.send(null);
-    return false;
 }
 
 function menuRechercher_Process()
@@ -111,11 +112,9 @@ function menuRechercher_Process()
 
 function menuRechercher_Click()
 {
-    //clear la page puis charger la vue index
     xhr.onreadystatechange=menuRechercher_Process;
     xhr.open("GET","CERIcar.php?action=rechercherVoyages",true);
     xhr.send(null);
-    return false;
 }
 
 function menuSeConnecter_Process()
@@ -123,19 +122,24 @@ function menuSeConnecter_Process()
     if(xhr.readyState==4 && xhr.status==200){
         var data=xhr.responseText;
         var newContent=$($.parseHTML(data)).find('#userLoginSuccess').html();
-        clearPage();
-        addView(newContent,"userLoginSuccess");
-        //charger userLogin.js
-        $.getScript("js/userLogin.js");
-        updateBandeau("Page userLogin chargée.");
+        
+        // si c'est null/undefined -> redirection javascript vers index
+        if(newContent==null || !newContent.trim())
+            window.location.replace("CERIcar.php");
+        else
+        {
+            clearPage();
+            addView(newContent,"userLoginSuccess");
+            //charger userLogin.js
+            $.getScript("js/userLogin.js");
+            updateBandeau("Page userLogin chargée.");
+        }
     }
 }
 
 function menuSeConnecter_Click()
 {
-    //clear la page puis charger la vue index
     xhr.onreadystatechange=menuSeConnecter_Process;
     xhr.open("GET","CERIcar.php?action=userLogin",true);
     xhr.send(null);
-    return false;
 }

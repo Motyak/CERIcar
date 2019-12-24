@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION['authUser'])): ?>
 <div id="LoginSection">
     <div class="limiter">
         <div class="container-login100">
@@ -8,7 +9,7 @@
                         </span>
                 </div>
 
-                <form id="#formLogin" class="login100-form validate-form" method="post">
+                <form id="formLogin" class="login100-form validate-form" method="post">
                     <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                         <span class="label-input100">Username</span>
                         <input class="input100" type="text" name="login" id="inputLogin" placeholder="Enter username">
@@ -37,12 +38,11 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <input name="submit" type="button" id="submit" class="login100-form-btn" value="Login"/>
-
-
+                        <input name="submit" type="button" id="btnSubmit" class="login100-form-btn" value="Login"/>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<?php endif; ?>

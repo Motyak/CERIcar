@@ -10,7 +10,10 @@ class mainController
 	// }
 
 	public static function index($request,$context)
-	{		
+	{
+		if(isset($_SESSION['authUser']))
+			$context->authUser=json_decode($_SESSION['authUser']);
+
 		return context::SUCCESS;
 	}
 
@@ -27,6 +30,12 @@ class mainController
 
 	public static function userLogin($request,$context)
 	{
+		// si la session user est set, faire une redirection vers index
+		// if(isset($_SESSION['user']))
+		// {
+		// 	return context::NONE;
+		// }
+
 		// si tentative de connexion
 		if(isset($request['login']) && isset($request['pwd']))
 		{
@@ -36,7 +45,6 @@ class mainController
 			if($context->user==null)
 			{
 				$context->error = "Login ou mot de passe incorrect !";
-				// return context::ERROR;
 			}
 
 			// si erreur connexion bdd
@@ -44,13 +52,13 @@ class mainController
 			{
 				// car le message d'erreur est retourne a la place de l'utilisateur
 				$context->error=$context->user;
-				// return context::ERROR;
 			}
 			
 			// si utilisateur trouve
 			else
 			{
-				$_SESSION['info'] = $context->user->nom.'&nbsp;' . $context->user->prenom;
+				$_SESSION['authUser'] = json_encode($context->user);
+				return context::NONE;
 			}
 		}
         return context::SUCCESS;

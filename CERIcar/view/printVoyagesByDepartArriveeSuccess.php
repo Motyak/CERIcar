@@ -1,7 +1,7 @@
 <div class="table-responsive">
 <?php
 if($context->voyages==null){
-	echo "<div class='alert alert-info'>",
+	echo "<div class='alert alert-warning'>",
     "<strong>Info : </strong>",
     "Aucun voyage n'a été trouvé",
   "</div>";

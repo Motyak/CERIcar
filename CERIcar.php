@@ -28,13 +28,20 @@ if($view===false)
 	die;
 }
 //inclusion du layout qui va lui meme inclure le template view
-elseif($view!=context::NONE)
+elseif($view==context::SUCCESS)
 {
 	$template_views=array($nameApp."/view/".$action.$view.".php");
 	$subViews=glob($nameApp."/view/".$action.$view."-*.php");
 	foreach($subViews as $sv)
 		$template_views[]=$sv;
 	include($nameApp."/layout/".$context->getLayout().".php");
+}
+
+elseif($view==context::NONE)
+{
+	//redirection vers index, action par defaut
+	header('Location: CERIcar.php');
+  	die;
 }
 
 ?>
