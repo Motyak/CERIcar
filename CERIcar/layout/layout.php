@@ -42,7 +42,7 @@
                         <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></li>
                         <?php endif; ?>
                         <?php if(!isset($_SESSION['authUser'])): ?>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+                        <li><a href="#" id="menuSInscrire"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
                         <li><a href="#" id="menuSeConnecter"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
                         <?php else: ?>
                         <li><a href="#" id="menuSeDeconnecter"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>

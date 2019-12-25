@@ -15,6 +15,7 @@ $(document).ready(function () {
     $('#menuRechercher').click(menuRechercher_Click);
     $('#menuSeConnecter').click(menuSeConnecter_Click);
     $('#menuSeDeconnecter').click(menuSeDeconnecter_Click);
+    $('#menuSInscrire').click(menuSInscrire_Click);
 });
 
 var xhr;
@@ -149,4 +150,31 @@ function menuSeDeconnecter_Click()
 {
     //redirection js vers l'action logout
     window.location.replace("CERIcar.php?action=userLogout");
+}
+
+function menuSInscrire_Process()
+{
+    if(xhr.readyState==4 && xhr.status==200){
+        var data=xhr.responseText;
+        var newContent=$($.parseHTML(data)).find('#userSigninSuccess').html();
+        
+        // si c'est null/undefined -> redirection javascript vers index
+        if(newContent==null || !newContent.trim())
+            window.location.replace("CERIcar.php");
+        else
+        {
+            clearPage();
+            addView(newContent,"userSigninSuccess");
+            //charger userSignin.js
+            $.getScript("js/userSignin.js");
+            updateBandeau("Page userSignin chargée.");
+        }
+    }
+}
+
+function menuSInscrire_Click()
+{
+    xhr.onreadystatechange=menuSInscrire_Process;
+    xhr.open("GET","CERIcar.php?action=userSignin",true);
+    xhr.send(null);
 }

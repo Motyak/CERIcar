@@ -28,7 +28,13 @@ class utilisateur{
 	/** @Column(type="string", length=200) */ 
 	public $avatar;
 
-	
+	function __construct($identifiant,$pass,$nom,$prenom,$avatar)
+	{
+		$this->identifiant=$identifiant;
+		$this->pass=$pass;
+		$this->nom=$nom;
+		$this->prenom=$prenom;
+		$this->avatar=$avatar;
+	}
 }
-
 ?>

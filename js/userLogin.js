@@ -40,7 +40,6 @@ $(document).ready(function(){
 var xhr;
 
 function btnLogin_Process(){
-    // pouvoir detecter si une redirection a été faite ou doit être envisagée, puis la faire en javascript
     if(xhr.readyState==4 && xhr.status==200){
         var data=xhr.responseText;
         $data=$($.parseHTML(data));
@@ -48,7 +47,7 @@ function btnLogin_Process(){
         // new content = form login qui se reset/affiche un panneau d'erreur par ex.
         var newContent=$data.find('#userLoginSuccess').html();
 
-        //si la div userLoginSuccess de la reponse est vide, alors redirigez vers index
+        // si redirection faites via ajax, alors faire redirection javascript
         if(newContent==null || !newContent.trim())
             window.location.replace("CERIcar.php");
         else

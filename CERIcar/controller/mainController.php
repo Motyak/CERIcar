@@ -28,6 +28,47 @@ class mainController
 	// 	return context::SUCCESS;
 	// }
 
+	public static function userSignin($request,$context)
+	{
+		// si la session user est set, faire une redirection vers index
+		if(isset($_SESSION['authUser']))
+		{
+			return context::NONE;
+		}
+
+		// si tentative d'inscription
+		if(isset($request['firstName']) && isset($request['lastName']) && isset($request['dateOfBirth']) && isset($request['username']) && isset($request['password']))
+		{
+			if(utilisateurTable::getUserByIdentifiant($request['username']) instanceof utilisateur)
+			{
+				$context->error = "Ce nom d'utilisateur existe déjà !";
+				return context::SUCCESS;
+			}
+
+			// creation de l'utilisateur a partir des parametres
+			$u = new utilisateur($request['username'],$request['password'],$request['lastName'],$request['firstName'],null);
+
+			// on ajoute l'utilisateur, la méthode retourne l'utilisateur si tout s'est bien passé
+			$res=utilisateurTable::addUser($u);
+
+			// si erreur connexion bdd
+			if(is_string($context->res))
+			{
+				// message d'erreur
+				$context->error=$res;
+			}
+			else
+			{
+				//recuperer le user complet, avec id généré par la base de données
+				$u=utilisateurTable::getUserByIdentifiant($request['username']);
+				//me connecter
+				$_SESSION['authUser'] = json_encode($u);
+				return context::NONE;
+			}
+		}
+        return context::SUCCESS;
+	}
+
 	public static function userLogin($request,$context)
 	{
 		// si la session user est set, faire une redirection vers index
@@ -40,6 +81,7 @@ class mainController
 		if(isset($request['login']) && isset($request['pwd']))
 		{
 			$context->user=utilisateurTable::getUserByLoginAndPass($request['login'],$request['pwd']);
+			// $context->user=utilisateurTable::getUserByIdentifiant($request['login']);
 
 			// si aucun utilisateur trouve
 			if($context->user==null)
