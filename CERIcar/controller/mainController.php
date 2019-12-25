@@ -46,7 +46,7 @@ class mainController
 			}
 
 			// creation de l'utilisateur a partir des parametres
-			$u = new utilisateur($request['username'],$request['password'],$request['lastName'],$request['firstName'],null);
+			$u = new utilisateur($request['username'],md5($request['password']),$request['lastName'],$request['firstName'],null);
 
 			// on ajoute l'utilisateur, la méthode retourne l'utilisateur si tout s'est bien passé
 			$res=utilisateurTable::addUser($u);
@@ -80,7 +80,7 @@ class mainController
 		// si tentative de connexion
 		if(isset($request['login']) && isset($request['pwd']))
 		{
-			$context->user=utilisateurTable::getUserByLoginAndPass($request['login'],$request['pwd']);
+			$context->user=utilisateurTable::getUserByLoginAndPass($request['login'],md5($request['pwd']));
 			// $context->user=utilisateurTable::getUserByIdentifiant($request['login']);
 
 			// si aucun utilisateur trouve
