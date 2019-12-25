@@ -68,6 +68,12 @@ function btnLogin_Process(){
 function btnLogin_Click(){
     var login=$('#inputLogin').val();
     var password=$('#inputPassword').val();
+    //verification conformite des champs, cote client
+    if(!login.trim() || !password.trim())
+    {
+        updateBandeau("Veuillez completer les champs vides !")
+        return;
+    }
     var params="login="+login+"&pwd="+password;
     xhr.onreadystatechange=btnLogin_Process;
     xhr.open("POST","CERIcar.php?action=userLogin",true);
