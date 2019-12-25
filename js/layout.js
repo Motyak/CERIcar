@@ -14,6 +14,7 @@ $(document).ready(function () {
     $('#menuIndex').click(menuIndex_Click);
     $('#menuRechercher').click(menuRechercher_Click);
     $('#menuSeConnecter').click(menuSeConnecter_Click);
+    $('#menuSeDeconnecter').click(menuSeDeconnecter_Click);
 });
 
 var xhr;
@@ -142,4 +143,10 @@ function menuSeConnecter_Click()
     xhr.onreadystatechange=menuSeConnecter_Process;
     xhr.open("GET","CERIcar.php?action=userLogin",true);
     xhr.send(null);
+}
+
+function menuSeDeconnecter_Click()
+{
+    //redirection js vers l'action logout
+    window.location.replace("CERIcar.php?action=userLogout");
 }

@@ -59,6 +59,8 @@ function btnLogin_Process(){
             $data.find('#bandeau').children().remove();
             var texteBandeau = $data.find('#bandeau').text();
             updateBandeau(texteBandeau);
+            //recharger le script de la page
+            $.getScript("js/userLogin.js");
         }
     }
 }

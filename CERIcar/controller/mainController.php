@@ -31,10 +31,10 @@ class mainController
 	public static function userLogin($request,$context)
 	{
 		// si la session user est set, faire une redirection vers index
-		// if(isset($_SESSION['user']))
-		// {
-		// 	return context::NONE;
-		// }
+		if(isset($_SESSION['authUser']))
+		{
+			return context::NONE;
+		}
 
 		// si tentative de connexion
 		if(isset($request['login']) && isset($request['pwd']))
@@ -62,6 +62,13 @@ class mainController
 			}
 		}
         return context::SUCCESS;
+	}
+	
+	public static function userLogout($request,$context)
+	{
+		//suppression variable session authUser + redirection vers index en retournant context none
+		unset($_SESSION['authUser']);
+		return context::NONE;
     }
 
 	public static function printUserByLoginAndPass($request,$context)
