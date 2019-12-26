@@ -23,4 +23,10 @@ class reservation{
 	 */ 
 	public $voyageur;
 
+	function __construct($voyage,$voyageur)
+	{
+		$this->voyage=$voyage;
+		$this->voyageur=$voyageur;
+	}
+
 }

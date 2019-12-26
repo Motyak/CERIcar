@@ -1,12 +1,10 @@
 <div class="table-responsive">
-<?php
-if($context->voyages==null){
-	echo "<div class='alert alert-warning'>",
-    "<strong>Info : </strong>",
-    "Aucun voyage n'a été trouvé",
-  "</div>";
-}
-?>
+<?php if($context->voyages==null): ?>
+	<div class='alert alert-warning'>
+    	<strong>Info : </strong>
+    	Aucun voyage n'a été trouvé
+  	</div>
+<?php endif; ?>
 <table id="voyages" class="table table-hover">
 	<thead>
 		<tr>
@@ -14,29 +12,36 @@ if($context->voyages==null){
 			<th>TARIF</th>
 			<th>NB PLACES</th>
 			<th>HEURE DEPART</th>
+			<?php if(isset($_SESSION['authUser'])): ?>
+			<!-- colonne sans titre pour bouton reserver -->
+			<th></th>
+			<?php endif; ?>
 		</tr>
 	</thead>
-	<?php 
-	if($context->voyages!=null)
-	{
-		foreach($context->voyages as $voyage)
-		{
-			//colonne1 : conducteur
-			echo "<tr>\n\t\t<td>",
-			$voyage->conducteur->prenom," ",
-			$voyage->conducteur->nom,
+	<?php if($context->voyages!=null): ?>
+		<?php foreach($context->voyages as $voyage): ?>
+			<tr>
+				<!-- colonne0 : ID voyage (caché) -->
+				<td hidden name="idVoy"><?php echo $voyage->id; ?></td>
 			
-			//colonne2 : tarif
-			"</td>\n\t\t<td>",$voyage->tarif,'€',
+				<!-- colonne1 : conducteur -->
+				<td><?php echo $voyage->conducteur->prenom . " " . $voyage->conducteur->nom; ?></td>
 			
-			//colonne3 : nbplace
-			"</td>\n\t\t<td>",$voyage->nbplace,
+				<!-- colonne2 : tarif -->
+				<td><?php echo $voyage->tarif . '€'; ?></td>
 			
-			//colonne4 : heuredepart
-			"</td>\n\t\t<td>",$voyage->heuredepart,'h',
-			"</td>\n\t</tr>\n\t";
-		}
-	}
-	?>
+				<!-- colonne3 : nbplace -->
+				<td><?php echo $voyage->nbplace; ?></td>
+			
+				<!-- colonne4 : heuredepart -->
+				<td><?php echo $voyage->heuredepart . 'h'; ?></td>
+
+				<?php if(isset($_SESSION['authUser'])): ?>
+				<!-- colonne5 : bouton reserver -->
+				<td> <button class="invisible" type="button" name="reserver">Réserver</button> </td>
+				<?php endif; ?>
+			</tr>
+		<?php endforeach; ?>
+	<?php endif; ?>
 </table>
 </div>

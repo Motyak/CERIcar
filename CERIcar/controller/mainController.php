@@ -262,6 +262,23 @@ class mainController
 	
 	public static function printVoyagesByDepartArrivee($request,$context)
 	{
+		// si utilisateur authentifié et demande de réservation
+		if(isset($_SESSION['authUser']) && isset($request['reservationIdVoyage']))
+		{
+			// recuperer voyage pour la construction de la reservation
+			$v = voyageTable::getVoyageByIdentifiant(intval($request['reservationIdVoyage']));
+			// recuperer utilisateur pour la construction de la reservation
+			$u = utilisateurTable::getUserByIdentifiant(139);
+			// creation de la reservation
+			$r = new reservation($v,$u);
+
+			// ajouter reservation dans la table
+			reservationTable::addReservation($r);
+
+			// decrementer nombre de place pour le voyage de la reservation concerné
+			voyageTable::decrementerNbplace(intval($request['reservationIdVoyage']));
+		}
+		
 		if(!isset($request["villeDepart"]))
 		{
 			$context->error="Le parametre 'villeDepart' n'a pas été renseigné";
@@ -287,7 +304,6 @@ class mainController
 		}
 		else
 			return context::SUCCESS;
-		
 	}
 
 }

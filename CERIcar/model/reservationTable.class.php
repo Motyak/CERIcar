@@ -32,5 +32,16 @@ class reservationTable {
 
 		return $reservations;
 	}
+
+	public static function addReservation($reservation)
+	{
+		$em = dbconnection::getInstance()->getEntityManager();
+		if($em == null)
+			return 'Erreur : La connection à la BDD a échouée';
+
+		// ajout de la reservation dans la table reservation
+		$em->persist($reservation);
+		$em->flush();
+	}
 }
 ?>
