@@ -269,7 +269,7 @@ class mainController
 		}
 		if(!isset($request["villeArrivee"]))
 		{
-			$context->error="Le parametre 'villeArrive' n'a pas été renseigné";
+			$context->error="Le parametre 'villeArrivee' n'a pas été renseigné";
 			return context::ERROR;
 		}
 

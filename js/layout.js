@@ -16,6 +16,7 @@ $(document).ready(function () {
     $('#menuSeConnecter').click(menuSeConnecter_Click);
     $('#menuSeDeconnecter').click(menuSeDeconnecter_Click);
     $('#menuSInscrire').click(menuSInscrire_Click);
+    $('#menuMesReservations').click(menuMesReservations_Click);
 });
 
 var xhr;
@@ -176,5 +177,32 @@ function menuSInscrire_Click()
 {
     xhr.onreadystatechange=menuSInscrire_Process;
     xhr.open("GET","CERIcar.php?action=userSignin",true);
+    xhr.send(null);
+}
+
+function menuMesReservations_Process()
+{
+    if(xhr.readyState==4 && xhr.status==200){
+        var data=xhr.responseText;
+        var newContent=$($.parseHTML(data)).find('#printUserReservationsSuccess').html();
+        
+        // si c'est null/undefined -> redirection javascript vers index
+        if(newContent==null || !newContent.trim())
+            window.location.replace("CERIcar.php");
+        else
+        {
+            clearPage();
+            addView(newContent,"printUserReservationsSuccess");
+            //pas de js a charger sur cette page ?
+            // $.getScript("js/printUserReservations.js");
+            updateBandeau("Page printUserReservations chargée.");
+        }
+    }
+}
+
+function menuMesReservations_Click()
+{
+    xhr.onreadystatechange=menuMesReservations_Process;
+    xhr.open("GET","CERIcar.php?action=printUserReservations",true);
     xhr.send(null);
 }
