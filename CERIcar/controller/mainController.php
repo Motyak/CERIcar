@@ -80,26 +80,26 @@ class mainController
 		// si tentative de connexion
 		if(isset($request['login']) && isset($request['pwd']))
 		{
-			$context->user=utilisateurTable::getUserByLoginAndPass($request['login'],md5($request['pwd']));
+			$u=utilisateurTable::getUserByLoginAndPass($request['login'],md5($request['pwd']));
 			// $context->user=utilisateurTable::getUserByIdentifiant($request['login']);
 
 			// si aucun utilisateur trouve
-			if($context->user==null)
+			if($u==null)
 			{
 				$context->error = "Login ou mot de passe incorrect !";
 			}
 
 			// si erreur connexion bdd
-			else if($context->user instanceof utilisateur == false)
+			else if($u instanceof utilisateur == false)
 			{
 				// car le message d'erreur est retourne a la place de l'utilisateur
-				$context->error=$context->user;
+				$context->error=$u;
 			}
 			
 			// si utilisateur trouve
 			else
 			{
-				$_SESSION['authUser'] = json_encode($context->user);
+				$_SESSION['authUser'] = json_encode($u);
 				return context::NONE;
 			}
 		}
@@ -231,6 +231,28 @@ class mainController
 		}
 		else
 			return context::SUCCESS;
+	}
+
+	public static function printUserReservations($request,$context)
+	{
+		// si l'utilisateur n'est pas connecté => redirection index
+		if(!isset($_SESSION['authUser']))
+			return context::NONE;
+
+		// je lui passe l'utilisateur pour qui je souhaite recuperer les reservations
+		$context->reservations=reservationTable::getReservationsByVoyageur(json_decode($_SESSION["authUser"]));
+
+		// si aucune reservation trouvee, on affiche quand meme la page
+		if($context->reservations==null)
+			return context::SUCCESS;
+
+		if(!is_array($context->reservations))
+		{
+			$context->error=$context->reservations;
+			return context::ERROR;
+		}
+		
+		return context::SUCCESS;
 	}
 	
 	public static function rechercherVoyages($request,$context)

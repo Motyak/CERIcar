@@ -17,5 +17,20 @@ class reservationTable {
 
 		return $reservations;
 	}
+
+	public static function getReservationsByVoyageur($voyageur)
+	{
+		$em = dbconnection::getInstance()->getEntityManager();
+		if($em == null)
+			return 'Erreur : La connection à la BDD a échouée';
+
+		$reservationRepository = $em->getRepository('reservation');
+		if($reservationRepository == null)
+			return "Erreur : La table 'reservation' n'existe pas";
+
+		$reservations = $reservationRepository->findBy(array('voyageur' => $voyageur->id));	
+
+		return $reservations;
+	}
 }
 ?>
