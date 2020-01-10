@@ -52,22 +52,22 @@ text-align:center;
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  src: url('../fonts/poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
 }
 
 @font-face {
   font-family: Poppins-SemiBold;
-  src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
+  src: url('../fonts/poppins/Poppins-SemiBold.ttf');
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -299,7 +299,185 @@ iframe {
   width: 80px;
 
 }
+/*==================================================================
+[ Title form ]*/
+.login100-form-title {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  padding: 70px 15px 74px 15px;
+}
+
+.login100-form-title-1 {
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.login100-form-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(54,84,99,0.4);
+}
+
+
+/*==================================================================
+[ Form ]*/
+
+.login100-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 43px 88px 93px 190px;
+}
+
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.label-input100 {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  text-align: right;
+
+  position: absolute;
+  top: 14px;
+  left: -105px;
+  width: 80px;
+
+}
+/******************/
+/*==================================================================
+[ Title form ]*/
+
+.wrap-login400 {
+  width:90%;
+  margin-left: 50px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  position: center;
+
+}
+.login400-form-title {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  padding: 110px 15px 74px 15px;
+}
+
+.login400-form-title-1 {
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.login400-form-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(54,84,99,0.4);
+}
+
+
+/*==================================================================
+[ Form ]*/
+
+.login400-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 43px 88px 93px 190px;
+}
+
+
+/*------------------------------------------------------------------
+[ Input ]*/
+
+.wrap-input400 {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.label-input400 {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  text-align: right;
+
+  position: absolute;
+  top: 14px;
+  left: -140px;
+
+
+}
+
+/*****************/
 .label-input200 {
   font-family: Poppins-Regular;
   font-size: 16px;
@@ -326,6 +504,17 @@ iframe {
   padding: 0 5px;
 }
 
+.input400 {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.2;
+
+  display: block;
+  background: transparent;
+  padding: 0 5px;
+}
+
 .input200 {
   font-family: Poppins-Regular;
   font-size: 15px;
@@ -347,6 +536,16 @@ iframe {
    left: 0;
    pointer-events: none;
  }
+
+.focus-input400 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
 
 .focus-input200 {
   position: absolute;
@@ -374,6 +573,22 @@ iframe {
   background: #57b846;
 }
 
+.focus-input400::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+
+  background: #57b846;
+}
 .focus-input200::before {
   content: "";
   display: block;
@@ -395,10 +610,18 @@ input.input100 {
   height: 45px;
 }
 
+input.input400 {
+  height: 45px;
+}
+
 input.input200 {
   height: 45px;
 }
 .input100:focus + .focus-input100::before {
+  width: 100%;
+}
+
+.input400:focus + .focus-input100::before {
   width: 100%;
 }
 .input200:focus + .focus-input200::before {
@@ -409,7 +632,9 @@ input.input200 {
 }.has-val.input200 + .focus-input200::before {
   width: 50%;
 }
-
+.has-val.input400 + .focus-input100::before {
+  width: 100%;
+}
 /*==================================================================
 [ Restyle Checkbox ]*/
 
@@ -544,6 +769,46 @@ input.input200 {
 }
 
 /*------------------------------------------------------------------
+[ Button ]*/
+.container-login400-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login400-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  min-width: 160px;
+  height: 50px;
+  background-color: #57b846;
+  border-radius: 25px;
+
+  font-family: Poppins-Regular;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login400-form-btn:hover {
+  background-color: #333333;
+}
+/*------------------------------------------------------------------
 [ Responsive ]*/
 
 @media (max-width: 576px) {
@@ -567,7 +832,26 @@ input.input200 {
   }
 }
 
+@media (max-width: 576px) {
+  .login400-form {
+    padding: 43px 15px 57px 117px;
+  }
+}
 
+@media (max-width: 480px) {
+  .login400-form {
+    padding: 43px 15px 57px 15px;
+  }
+
+  .label-input400 {
+    text-align: left;
+    position: unset;
+    top: unset;
+    left: unset;
+    width: 100%;
+    padding: 0 5px;
+  }
+}
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 

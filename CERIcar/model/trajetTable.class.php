@@ -17,5 +17,16 @@ class trajetTable {
 		
 		return $trajet;
 	}
+	
+	public static function addTrajet($trajet)
+	{
+		$em = dbconnection::getInstance()->getEntityManager();
+		if($em == null){
+		return 'Erreur : La connection à la BDD a échouée';}
+		
+		// ajout du trajet dans la table trajet
+		$em->persist($trajet);
+		$em->flush();
+	}
 }
 ?>

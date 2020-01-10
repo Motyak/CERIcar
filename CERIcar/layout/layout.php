@@ -40,7 +40,7 @@
                         <li><a href="#" id="menuRechercher"><span class="glyphicon glyphicon-search"></span> Rechercher</a></li>
                         <?php if(isset($_SESSION['authUser'])): ?>
                         <li><a href="#" id="menuMesReservations"><span class="glyphicon glyphicon-list-alt"></span> Mes réservations</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></li>
+                        <li><a href="#"  id="ProposerVoyage"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></li>
                         <?php endif; ?>
                         <?php if(!isset($_SESSION['authUser'])): ?>
                         <li><a href="#" id="menuSInscrire"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>

@@ -28,6 +28,47 @@ class mainController
 	// 	return context::SUCCESS;
 	// }
 
+public static function ProposerVoyage($request,$context)
+	{
+		
+			if( isset($request['depart']) && isset($request['arrivee']) && isset($request['hdepart'])  && isset($request['nbplace']) && isset($request['tarif_voyage']) )
+		{
+			
+			// creation de voyage proposé a partir des parametres
+			$trajet = new trajet($request['depart'], $request['arrivee'], 0);
+			
+			// on ajoute le trajet
+			$res=trajetTable::addTrajet($trajet);
+			// si erreur connexion bdd
+			if(is_string($context->res))
+			{
+				// message d'erreur
+				$context->error=$res;
+			}
+
+			if(empty($request['commentaire']))
+				$request['commentaire'] = " ";
+			
+			
+			$user = json_decode($_SESSION['authUser']);
+			// creation de voyage proposé a partir des parametres
+			$voyage = new voyage($user->id, $trajet->id,$request['tarif_voyage'],$request['nbplace'],$request['hdepart'],$request['commentaire']);
+			$context->error = var_dump($voyage);
+			// on ajoute le voyage proposé
+			//$res=voyageTable::addVoyage($voyage);
+
+			// si erreur connexion bdd
+			if(is_string($context->res))
+			{
+				//message d'erreur
+				$context->error=$res;
+			}
+		
+		}
+		
+        return context::SUCCESS;
+	}
+
 	public static function userSignin($request,$context)
 	{
 		// si la session user est set, faire une redirection vers index
