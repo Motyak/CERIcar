@@ -46,7 +46,7 @@ class utilisateurTable {
 		if($userRepository == null)
 			return "Erreur : La table 'utilisateur' n'existe pas";
 
-		$user = $userRepository->findOneBy(array('id' => $identifiant));
+		$user = $userRepository->findOneBy(array('identifiant' => $identifiant));
 
 		return $user; 
 	}
